@@ -11,24 +11,24 @@ window.onclick = (e) => {
     bookDetails.classList.remove("visible");
   }
 }
-let count_request = 0;
+let apiRequestCount = 0;
 let booksArray = [];
 let maxResults = 30;
 let defaultBook = "novels";
 apply.onclick = () => {
   // RESET COUNT REQUEST
-  if (count_request == 3) {
+  if (apiRequestCount == 3) {
     setTimeout(() => {
-      count_request = 0;
+      apiRequestCount = 0;
     }, 2000);
   }
 
-  if (count_request < 3 && searchInput.value.trim() !== "") {
+  if (apiRequestCount < 3 && searchInput.value.trim() !== "") {
     const searchValue = searchInput.value.trim();
     fetchBooks(searchValue, maxResults);
     searchResults.textContent = `Search Results : ${searchValue}`;
   }
-  count_request++;
+  apiRequestCount++;
 }
 async function fetchBooks(topic, booksLimit) {
   try {
